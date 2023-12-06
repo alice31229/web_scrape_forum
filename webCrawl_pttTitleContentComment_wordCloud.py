@@ -358,7 +358,7 @@ plt.savefig(output_path, bbox_inches='tight', pad_inches=0)
 words = wc_titleTxt_jb.words_.keys()
 print(words)
 
-TOKEN = "6120156196:AAFV2c61U5v6hnLg0MIiOP85KLZE4TChM0Y"
+TOKEN = "YOUR_TOKEN"
 url = f"https://api.telegram.org/bot{TOKEN}/getUpdates"
 secret = requests.get(url).json()
 chat_id = secret['result'][0]['message']['chat']['id']
