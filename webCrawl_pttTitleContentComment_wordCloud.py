@@ -31,44 +31,6 @@ import matplotlib.pyplot as plt
 my_headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
              'cookie': 'over18=1;'}
 
-# 日期 關鍵字 
-# 文章標題 內文 留言串
-
-# salary_url = 'https://www.ptt.cc/bbs/Salary/index.html'
-
-# response = requests.get(salary_url, headers = my_headers)
-# response.encoding = 'utf-8' #轉換編碼至UTF-8
-# soup = BeautifulSoup(response.text, features="lxml")
-
-# # 找到特定的div
-# target_div = soup.find('div', class_='r-list-sep')
-
-# ###
-# # 找到特定div之前的所有class=title的div
-# previous_divs = target_div.find_all_previous('div', class_='title')
-
-# # 打印所有div
-# lst = []
-# lst_url = []
-# deleted_article = '本文已被刪除'
-# for div_i in range(len(previous_divs)):
-
-#     div_title = previous_divs[div_i].text.replace('\n','')
-#     if deleted_article not in div_title:
-
-#         lst.append(div_title)
-
-#         div_url = 'https://www.ptt.cc'+previous_divs[div_i].find('a')['href']
-#         lst_url.append(div_url)
-
-#     else:
-
-#         lst.append(div_title)
-#         lst_url.append('Deleted url')
-
-# data = {'title':lst, 'articleURL':lst_url}
-# df_lst = pd.DataFrame(data)
-
 
 
 # -------------------------------------------------------
@@ -88,11 +50,6 @@ options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
 #options.add_argument('cookie=over18=1')
 options.chrome_executable_path='../webCrawl/chromedriver'
 driver=webdriver.Chrome(options=options)
-
-# date = []
-# title = []
-# url = []
-# forum = []
 
 # title
 def article_title_link(scrolls, keywords):
@@ -150,16 +107,6 @@ def article_title_link(scrolls, keywords):
 
 
 # comment
-# driver=webdriver.Chrome(options=options)
-#driver_original=webdriver.Chrome(options=options)
-
-# date = []
-# topic = []
-# floor = []
-# person = []
-# comment = []
-# forum = []
-
 def get_comments(target_articles):
     
     date = []
@@ -204,12 +151,6 @@ def get_comments(target_articles):
 
 
 # content
-# date = []
-# forum = []
-# topic = []
-# content = []
-
-
 def get_contents(target_articles):
 
     date = []
@@ -223,8 +164,6 @@ def get_contents(target_articles):
         time.sleep(np.random.randint(7, 20))
         
         contents = driver.find_elements(By.TAG_NAME, 'p')
-            
-        #topic.append(target_articles['title'][ind])
         
         content_txt = ''
         for c in contents:
@@ -383,12 +322,3 @@ if response.status_code == 200:
     print('圖片已成功傳送至 Telegram Bot！')
 else:
     print('圖片傳送失敗，錯誤訊息:', response.text)
-
-
-# calculate words frequency
-#word_freq = WordCloud().process_text(titleTxt_jb_str)
-# word_freq = WordCloud().process_text(wc_titleTxt_jb)
-# df_wc = pd.DataFrame({'詞':word_freq.keys(),
-#                       '頻率':word_freq.values()})
-# df_wc = df_wc.sort_values(by='頻率', ascending=False)
-# print(df_wc)
