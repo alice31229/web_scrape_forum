@@ -20,7 +20,6 @@ from selenium.webdriver.chrome.options import Options
 
 
 # wordCloud
-#from ckiptagger import data_utils, construct_dictionary, WS, POS, NER
 import jieba
 import jieba.analyse
 from PIL import Image 
@@ -28,14 +27,6 @@ import imageio
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-my_headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
-             'cookie': 'over18=1;'}
-
-
-
-# -------------------------------------------------------
-# ptt Brain 可查找個版面的關鍵字標題文章
-brain_url = 'https://www.pttbrain.com/'
 
 # 第一步 取得關鍵字文章標題與url
 options = Options()
@@ -256,10 +247,6 @@ titleTxtOriList = content_df['文章內容'].to_list()
 #titleTxtOriList = comment_df['留言'].to_list()
 
 titleTxtOriStr = ' '.join(map(str, titleTxtOriList))
-
-
-# ckip
-#ws = WS("./data")
 
 
 # jieba
