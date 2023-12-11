@@ -252,7 +252,6 @@ titleTxtOriStr = ' '.join(map(str, titleTxtOriList))
 # jieba
 jieba.set_dictionary('./dict.txt.big.txt')
 titleTxt_jb1 = jieba.cut_for_search(titleTxtOriStr)
-titleTxt_jb2 = jieba.cut(titleTxtOriStr, cut_all = True)
 
 titleTxt_jb_list = []
 for content in titleTxt_jb1:
